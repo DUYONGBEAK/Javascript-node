@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>test html file</title>
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  Html</br>
+  Css</br>
+  Node.js</br>
+  Javascript</br>
+  Mysql</br>
+  Python</br>
+  Oracle</br>
+  Toad</br>
+  Java</br>
+  Linux</br>
+</body>
+<script>
+  // let으로 선언을 하면 모든 type을 다 담을 수 있다.
+  // {}를 사용하면 변수에 객체를 담을거라는 의미이다.
+  // let human1 = {};
+  // human1.age = "20";
+  // human1.height = "180CM";
+  // human1.name = "john";
+  // console.log(human1);
+  //
+  // let human2 = {};
+  // human2.age = "30";
+  // human2.height = "160CM";
+  // human2.name = "jane";
+  // console.log(human2);
+  //
+  // // 이같은 변수선언과 위의 객체선언과 같은 결과를 보여줌
+  // let human3 = {
+  //   age: "25",
+  //   height: "170Cm",
+  //   name: "jack"
+  // };
+  // console.log(human3);
+  //
+  // // 배열은 변수들의 집합이라고 보면 된다.
+  // // 관리를 편하게 하기 위해서 배열을 사용할 것이다.
+  // let arr1 = [1, 2, 3];
+  // console.log(arr1[0], arr1[1], arr1[2]);
+
+
+  // // for문의 본질이다.
+  // // for문 중간에 느낌표는 조건이 false인 것을 true로 바꿔주는 것이다.
+  // // !를 안붙이면 조건을 탈출하고 반복문이 종료된다.
+  // for (console.log(1); !console.log(2); console.log(4)) {
+  //   console.log(3);
+  //
+  //   i = i + 1;
+  //   if (i > 4) break;
+  // }
+  // 예시 for문의 결과
+  //123
+  //4
+  //23
+  //4
+  //23
+  //4
+  //23
+  //4
+  //23
+
+  // for (i = 0; i < 100; i++) {
+  //   if (i % 2 != 0) {
+  //     console.log(i);
+  //   }
+  // }
+  //
+  // for (i = 0; i < 100; i++ ) {
+  //   i = i + 1;
+  //   console.log(i);
+  // }
+  //
+  // for (i = 0; i < 100; i++) {
+  //   // 최하위 비트값이 0이면 짝수이고, 1이면 홀수이다.
+  //   if (i & 0x01) {
+  //     console.log(i);
+  //   }
+  // }
+  let star = "";
+
+  // for (i = 0; i < 6; i++) {
+  //   star = "*";
+  //   for (let j = 0; j < i; j++) {
+  //     star += "**";
+  //   }
+  //   console.log(star);
+  // }
+  //
+  // for(i = 5; i >= 0; i = i - 1) {
+  //   star = "*";
+  //   for (let j = 0; j < i; j++) {
+  //     star += "**";
+  //   }
+  //   console.log(star);
+  // }
+
+  // for (i = 0; i < 6; i++) {
+  //   star = "*";
+  //   if (i < 5) {
+  //     for (let j = 0; j < i; j++) {
+  //       star += "**";
+  //     }
+  //     console.log(star);
+  //   }
+  //    else {
+  //      for(let k = 5; k >= 0; k = k - 1) {
+  //        star = "*";
+  //        for (let j = 0; j < k; j++) {
+  //          star += "**";
+  //        }
+  //        console.log(star);
+  //      }
+  //   }
+  //
+  // }
+
+// let k = 4;
+//   for (i = 0; i < 5; i++) {
+//     star = "*"
+//     for (let j = 0; j < i;) {
+//       k ? j++ : j--
+//       star += "*"
+//      k--
+//     }
+//     console.log(star);
+//   }
+let j = 0;
+let i = 0;
+
+  // for (i = 0 , j = 0; i < 5; i++) {
+  //  star = "*"
+  //   for (let k = 0; k < j + 3; k++) {
+  //     k < 2 - j) ? star += "*" : star += "1"
+  //   console.log(star)
+  //   }
+  //   if (i < 2){
+  //     j++;
+  //   }else{
+  //     j--;
+  //   }
+  // }
+
+
+  // for (i = 0 , j = 0; i < 9; i++) {
+  //  star = "*"
+  //   for (let k = 0; k < j; k++) {
+  //     k < j  ? star += "*" : star += "1"
+  //   }
+  //   console.log(star)
+  //   if (i < 4){
+  //     j++;
+  //   }else{
+  //     j--;
+  //   }
+  // }
+
+  for (i = 0; i < 9; i++) {
+   star = "*"
+    for (let k = 0; k < j; k++) {
+      star += "*"
+    }
+    console.log(star)
+    i < 4 ? j++ : j--;
+  }
+
+</script>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  구구단 계산<br>
+  <input type="text" name="" value="" id="number"><br>
+  <input type="text" name="" value="" id="range"><br>
+  기본 : <input type="radio" name="num" value="1" id="basic" checked>
+  홀 : <input type="radio" name="num" value="2" id="odd">
+  짝 : <input type="radio" name="num" value="3" id="even"><br>
+  <input type="button" name="" value="계산" id="btn1"><br><br>
+  <input type="text" name="" value="" id="data"><br>
+  <input type="button" name="" value="데이터 확인" id="btn2"><br>
+  <!-- 영역을 지정해 주기위한 태그 -->
+  <span id="result"></span>
+</body>
+<script type="text/javascript">
+  $("#btn1").click(function() {
+    console.log($("#number").val(), $("range").val())
+
+    let i = $("#number").val();
+
+   // append는 여러번 직어주고 html은 한번만 찍어준다.
+  // 출력된 결과물은 다 삭제하고 다시 출력하게 하는 명령어
+    $("#result").html("");
+
+    //기본 구구단
+    if ($("#basic").is(":checked")) {
+      for (let j = 1; j <= $("#range").val(); j++) {
+        $("#result").append(`${i} x ${j} = ${i*j}<br>`);
+      }
+      // 홀수만 구구단
+    } else if ($("#odd").is(":checked")) {
+      for (let j = 0; j <= $("#range").val(); j++) {
+        if (j & 0x01) {
+          $("#result").append(`${i} x ${j} = ${i*j}<br>`);
+        }
+      }
+      // 짝수만 구구단
+    } else if ($("#even").is(":checked")) {
+      for (let j = 0; j <= $("#range").val(); j++) {
+        if (!(j & 0x01) && j != 0) {
+          $("#result").append(`${i} x ${j} = ${i*j}<br>`);
+        }
+      }
+    } else {
+      console.log("error")
+    }
+  });
+
+//----------다른방법---------------------------------------------------------------------------
+  // radio에서 입력받은 value값을 넣을 변수를 생성
+  let clickRaido = $('input[name="num"]:checked').val();
+
+  $("#result").html("");
+  // 기본 구구단
+  if (clickRaido == 1) {
+    for (let j = 1; j <= $("#range").val(); j++) {
+      $("#result").append(`${i} x ${j} = ${i*j}<br>`);
+    }
+    // 홀수만 구구단
+  } else if (clickRaido == 2) {
+    for (let j = 0; j <= $("#range").val(); j++) {
+      if (j & 0x01) {
+        $("#result").append(`${i} x ${j} = ${i*j}<br>`);
+      }
+    }
+    //짝수만 구구단
+  } else if (clickRaido == 3) {
+    for (let j = 0; j <= $("#range").val(); j++) {
+      if (!(j & 0x01) && j != 0) {
+        $("#result").append(`${i} x ${j} = ${i*j}<br>`);
+      }
+    }
+  } else {
+    console.log("error")
+  }
+});
+
+
+// 입력받은 내용을 찾아서 해당하는 내용을 데이터베이스에서 찾아서 전부 출력
+  $("#btn2").click(function() {
+    console.log($("#data").val()),
+      $.ajax({
+        type: "GET",
+        url: `/test1`,
+        data: {
+          title: $("#data").val(),
+        },
+        success: function(res) {
+          console.log(res);
+
+          $("#result").html("");
+          for (let i = 0; i < res.length; i++) {
+            $("#result").append(`${res[i].no}/ ${res[i].title} / ${res[i].content}<br>`);
+          }
+        }
+
+      });
+  });
+
+
+</script>
+
+</html>

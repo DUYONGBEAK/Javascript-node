@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <body>
+  정보입력<br>
+  제목 : <input type="text" name="" value="" id="newstitle"><br>
+  내용 : <input type="text" name="" value="" id="newscontent"><br>
+  <input type="button" name="" value="입력" id="btn1"><br><br>
+  확인 : <input type="text" name="" value="" id="newsok"><br>
+  <input type="button" name="" value="입력" id="btn2">
+  <!-- 영역을 지정해 주기위한 태그 -->
+  <span id="result"></span>
+  </body>
+  <script type="text/javascript">
+
+    // 입력된 정보를 node에게 보내서 노드가 DB에 보낸다.
+     $("#btn1").click(function() {
+       console.log($("#newstitle").val(), $("#newscontent").val()),
+       //ajax덕분에 유저몰래 리퀘스트를 전송할 수 있다.
+       $.ajax({
+         type: "post",
+         url: `/test1` ,
+         data: {
+           title : $("#newstitle").val(),
+           content : $("#newscontent").val(),
+       },
+         success: function(res) {
+          console.log(res);
+          if(res=='not ok') {
+            alert("입력 실패");
+          }
+          else if(res=='ok') {
+            alert("입력 성공");
+          }
+         }
+       });
+     });
+
+     $("#btn2").click(function() {
+        console.log($("#newsok").val()),
+       $.ajax({
+         type: "GET",
+         url: `/test1`,
+         data: {
+          no : $("#newsok").val(),
+         },
+         success: function(res) {
+           console.log(res);
+           // append는 여러번 직어주고 html은 한번만 찍어준다.
+           //$("#result").html(`${res[0].no}/ ${res[0].title} / ${res[0].content}<br>`);
+           $("#result").html("");
+           $("#result").append(`${res[0].no}/ ${res[0].title} / ${res[0].content}<br>`);
+        }
+
+       });
+     });
+  </script>
+</html>
