@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  <form>
+    <div id="box">
+      <input type="text" name="num"></input><br><br>
+      <input type="button" name="" value="추가" id="add" onclick="add_textbox()"></input>
+      <input type="button" name="" value="계산" id="calc"></input><br>
+    </div>
+  </form>
+  <span id="result"></span>
+</body>
+<script type="text/javascript">
+// add_textbox라는 변수를 만들어서 바로 실행되도록 함
+  const add_textbox = () => {
+    // div태그의 id를 가져와서 변수를 생성한다.
+    const box = document.getElementById("box");
+    // unbox라는 변수는 text박스가 생성될때 p태크를 생성해서 그 안에 text박스가 들어가게함
+    const unbox = document.createElement('p');
+    // p태그 안에 아래와 같은 html코드를 넣어준다.
+    unbox.innerHTML = "<input type='text' name='add_num'> <input type='button' value='삭제' onclick='remove(this)'>";
+    // text박스를 위에 생성한다.
+    box.prepend(unbox);
+  }
+  // 삭제 버튼을 누르면 text박스가 삭제되도록 한다.
+  const remove = (obj) => {
+    document.getElementById('box').removeChild(obj.parentNode);
+  }
+
+  // 계산 버튼을 눌렀을 때 text박스에 입력된 총합이 계산됨
+  $("#calc").click(function() {
+    // 기존에 생성되어 있는 값을 받아옴
+    let num = Number($('input[name="num"]').val());
+    // 새로 생성한 text박스의 길이를 가져옴
+    var size = document.getElementsByName("add_num").length;
+    // 그 길이 만큼 반복문을 돌면서 값을 가져와서 num과 합해줌
+    for (var i = 0; i < size; i++) {
+      num += Number(document.getElementsByName("add_num")[i].value);
+    }
+    // 결과값을 아래다가 출력
+    $("#result").html(num);
+    console.log(num);
+  });
+</script>
+
+</html>

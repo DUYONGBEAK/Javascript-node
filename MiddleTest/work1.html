@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<body>
+  <input type="text" name="" id="num1"></input>
+  <input type="text" name="" id="num2"></input><br><br>
+  <input type="button" name="" value="절대값 계산" id="btn"></input><br>
+</body>
+<script>
+  $("#btn").click(function() {
+
+    // input창에서 입력된 값을 확인해줌
+    console.log($("#num1").val())
+    console.log($("#num2").val())
+
+    // input창에서 입력된 값을 숫자 타입으로 변환함
+    let num1 = Number($("#num1").val());
+    let num2 = Number($("#num2").val());
+
+    // 절대값으로 변환
+    let a = Math.abs(num1);
+    let b = Math.abs(num2);
+
+
+    console.log("합 : " + (a + b));
+
+    // 두 입력값을 비교해서 큰값을 num1에 넣어준다.
+    if (num1 < num2) {
+      let temp = num1;
+      num1 = num2;
+      num2 = temp;
+    } else if (num1 >= num2) {
+      //Nothing happens
+    }
+
+    console.log("차 : " + (num1 - num2));
+    console.log("곱 : " + (num1 * num2));
+    console.log("나누기 : " + (num1 / num2));
+
+  });
+</script>
+
+</html>
